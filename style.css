@@ -1,0 +1,15 @@
+body {
+  background-image: url("images/bg_wood.jpg");
+  background-color: #cccccc;
+  margin: 0px;
+}
+
+#calcBody {
+  width: 600px;
+  height: 825px;
+  background-color: #b4b5ba;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
