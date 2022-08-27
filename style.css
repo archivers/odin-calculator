@@ -1,3 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: "Eurostile";
+  src: url(fonts/Eurostile.ttf);
+  src: local("Eurostile"), url(fonts/Eurostile.tff) format("opentype");
+}
+
 body {
   background-image: url("images/bg_wood.jpg");
   background-color: #cccccc;
@@ -12,4 +26,40 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#calcHeader {
+  width: 600px;
+  height: 112.5px;
+  padding: 46.875px 0px 46.875px;
+  border-style: dotted;
+
+  font-size: 18.75px;
+  font-family: Eurostile;
+  font-weight: bold;
+  display: flex;
+}
+
+#calcLogo {
+  width: 187.5px;
+  height: 18.75px;
+  padding: 0px 37.5px;
+  border-style: dotted;
+}
+
+#calcSolar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #80736a;
+  width: 206.25px;
+  height: 46.875px;
+  
+}
+
+.calcSolarPanel {
+  display: flex;
+  flex-grow: 1;
+  background-color: #72665a;
+  max-width: 50px;
+  height: 50px;
 }
