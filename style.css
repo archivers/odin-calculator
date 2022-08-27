@@ -32,7 +32,7 @@ body {
   width: 600px;
   height: 112.5px;
   padding: 46.875px 0px 46.875px;
-  border-style: dotted;
+  outline: solid;
 
   font-size: 18.75px;
   font-family: Eurostile;
@@ -44,7 +44,7 @@ body {
   width: 187.5px;
   height: 18.75px;
   padding: 0px 37.5px;
-  border-style: dotted;
+  outline: solid;
 }
 
 #calcSolar {
@@ -53,6 +53,7 @@ body {
   background-color: #80736a;
   width: 206.25px;
   height: 46.875px;
+  outline: solid;
   
 }
 
@@ -61,5 +62,6 @@ body {
   flex-grow: 1;
   background-color: #72665a;
   max-width: 50px;
-  height: 50px;
+  height: 46.875px;
+  outline: solid;
 }
