@@ -1,9 +1,11 @@
 html {
   box-sizing: border-box;
+
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
+
 }
 
 @font-face {
@@ -31,20 +33,28 @@ body {
 #calcHeader {
   width: 600px;
   height: 112.5px;
-  padding: 46.875px 0px 46.875px;
-  outline: solid;
+  padding: 0px;
 
   font-size: 18.75px;
   font-family: Eurostile;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+#calcHeaderTop {
+  width: 600px;
+  height: 37.5px;
+}
+
+#calcHeaderMain{
   display: flex;
 }
 
 #calcLogo {
   width: 187.5px;
   height: 18.75px;
-  padding: 0px 37.5px;
-  outline: solid;
+  padding: 12.375px 37.5px;
 }
 
 #calcSolar {
@@ -53,8 +63,6 @@ body {
   background-color: #80736a;
   width: 206.25px;
   height: 46.875px;
-  outline: solid;
-  
 }
 
 .calcSolarPanel {
@@ -63,5 +71,86 @@ body {
   background-color: #72665a;
   max-width: 50px;
   height: 46.875px;
+}
+
+#calcText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.headerText {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+}
+
+#calcDisplay {
+  width: 543.75px;
+  height: 168.75px;
+  background-color: #797e84;
+  margin: auto;
+  padding-top: 14px;
+}
+
+#calcLCD {
+  width: 478.125px;
+  height: 131.25px;
+  background-color: #838578;
+  margin: auto;
+}
+
+#calcButtHeader {
+  height: 75px;
   outline: solid;
+}
+
+#calcButts {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px 106px;
+}
+
+.button {
+  width: 75px;
+  height: 65.625px;
+  background-color: #7b7e83;
+  color: #d6dde7;
+  font-size: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.buttonOutline {
+  width: 79px;
+  height: 70px;
+  background-color: #585d63;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 9px;
+}
+
+.addButt {
+  height: 154px;
+}
+
+.addButtOutline {
+  height: 158px;
+}
+
+.redButt {
+  background-color: #91355e;
+}
+
+.blackButt {
+  background-color: #4f5259;
+}
+
+#buttBot {
+  margin-top: -88px;
+  display: flex;
 }
