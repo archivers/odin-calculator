@@ -11,7 +11,11 @@ html {
 @font-face {
   font-family: "Eurostile";
   src: url(fonts/Eurostile.ttf);
-  src: local("Eurostile"), url(fonts/Eurostile.tff) format("opentype");
+  src: local("Eurostile"), url(fonts/Eurostile.tff) format("truetype");
+
+  font-family: "curved-seven-segment";
+  src: url(fonts/curved-seven-segment.ttf);
+  src: local("curved-seven-segment"), url(fonts/curved-seven-segment.ttf) format("truetype");
 }
 
 body {
@@ -98,7 +102,7 @@ body {
   width: 478.125px;
   height: 131.25px;
   background-color: #838578;
-  margin: auto;
+  margin: 0 auto;
 }
 
 #calcButtHeader {
@@ -154,4 +158,14 @@ body {
 #buttBot {
   margin-top: -88px;
   display: flex;
+}
+
+#sevenSegment {
+  width: 478.125px;
+  height: 131.25px;
+  font-family: "curved-seven-segment";
+  font-size: 163px;
+  top: -24px;
+  position: relative;
+  padding: 3px;
 }
