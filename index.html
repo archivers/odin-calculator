@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Casio Calculator</title>
   </head>
   <body>
@@ -27,7 +27,13 @@
       </div>
       <div id="calcDisplay">
         <div id="calcLCD">
-            <div id="sevenSegment">012345678.</div>
+          <div id="smallSigns">
+            <div class="smallIcon" id="smallDivision"><pre>&#247</pre></div>
+            <div class="smallIcon" id="smallMultiplication">x</div>
+            <div class="smallIcon" id="smallSubtraction">–</div>
+            <div class="smallIcon" id="smallAddition">+</div>
+          </div>
+          <div id="sevenSegment">012345678.</div>
         </div>
       </div>
       <div id="calcButtons">
@@ -43,7 +49,7 @@
             <div class="button blackButt">+/-</div>
           </div>
           <div class="buttonOutline">
-            <div class="button blackButt"><pre>&#247</pre></div>
+            <div class="button blackButt" id="divButt"><pre>&#247</pre></div>
           </div>
           <div class="buttonOutline">
             <div class="button">7</div>

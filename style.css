@@ -98,11 +98,44 @@ body {
   padding-top: 14px;
 }
 
+#smallSigns {
+  display: flex;
+  justify-content: right;
+  font-family: "curved-seven-segment";
+}
+
+#smallDivision pre {
+  margin: 0px;
+}
+
+.smallIcon {
+  width: 15px;
+  height: 15px;
+  background-color: #000;
+  color: #797e84;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #calcLCD {
   width: 478.125px;
   height: 131.25px;
   background-color: #838578;
   margin: 0 auto;
+}
+
+#sevenSegment {
+  width: 478.125px;
+  height: 131.25px;
+  font-family: "curved-seven-segment";
+  font-size: 163px;
+  top: -40px;
+  position: relative;
+  padding: 3px;
 }
 
 #calcButtHeader {
@@ -160,12 +193,4 @@ body {
   display: flex;
 }
 
-#sevenSegment {
-  width: 478.125px;
-  height: 131.25px;
-  font-family: "curved-seven-segment";
-  font-size: 163px;
-  top: -24px;
-  position: relative;
-  padding: 3px;
-}
+
