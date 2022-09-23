@@ -1,3 +1,10 @@
+//periodFlag = 1 means period has been pressed recently
+let periodFlag = 0;
+//clearFlag = 1 means the clear button has been pressed recently
+let clearFlag = 0;
+//negFlag = 1 means negative
+let negFlag = 0;
+
 const divButtDiv = document.getElementById("divButt");
 const multButtDiv = document.getElementById("multButt");
 const subButtDiv = document.getElementById("subButt");
@@ -5,7 +12,8 @@ const addButtDiv = document.getElementById("addButt");
 const clearButtDiv = document.getElementById("clearButt");
 const numButtDiv = document.getElementsByClassName("numButt");
 const periodButtDiv = document.getElementById("periodButt");
-let periodFlag = 0;
+const negButtDiv = document.getElementById("negButt");
+
 
 divButtDiv.addEventListener('click', division);
 multButtDiv.addEventListener('click', multiplication);
@@ -16,6 +24,7 @@ for (const numButt of numButtDiv) {
   numButt.addEventListener('click', updateScreen);
 }
 periodButtDiv.addEventListener('click',addPeriod);
+negButtDiv.addEventListener('click',addNeg);
 
 function division() {
   storeDisplayOperand();
@@ -39,14 +48,20 @@ function clearScreen() {
   const LCD = document.getElementById("sevenSegment");
   LCD.textContent = "0.";
   clearPeriod();
+  setClearFlag();
+  resetNeg();
+  hideSmallIcons();
+  hideSmallNeg();
 }
 
 function updateScreen(e) {
+  resetClearFlag();
   const LCD = document.getElementById("sevenSegment");
 
   if (LCD.textContent.length < 10) {
     if (LCD.textContent.endsWith(".") && periodFlag === 0) {
-      if (LCD.textContent === "0.") {
+      //you have to take into account for -0. otherwise the when you press a number it will be -09, etc.
+      if (LCD.textContent === "0." || LCD.textContent === "-0.") {
         LCD.textContent = LCD.textContent.replace("0.",'');
       } else {
         LCD.textContent = LCD.textContent.replace(".",'');
@@ -55,6 +70,19 @@ function updateScreen(e) {
     } else {
     LCD.textContent += e.currentTarget.textContent;
     }
+  /* this section is needed for when you have a negative number and the next number maxes out the display
+     the calculator must remove the negative sign and active the small icon
+  */
+  } else if(LCD.textContent.includes('-')){
+    //for numbers ending with a period
+    if(LCD.textContent.endsWith('.')) {
+      LCD.textContent = LCD.textContent.replace('-','').replace('.','') + e.currentTarget.textContent + '.';
+    //for numbers that contain a decimal
+    } else {
+      LCD.textContent = LCD.textContent.replace('-','') + e.currentTarget.textContent;
+    }
+    
+    displayNegative();
   }
 }
 
@@ -64,6 +92,34 @@ function addPeriod() {
 
 function clearPeriod() {
   periodFlag = 0;
+}
+
+function resetClearFlag() {
+  clearFlag = 0;
+}
+
+function setClearFlag() {
+  clearFlag = 1;
+}
+
+function resetNeg() {
+  negFlag = 0;
+}
+
+function setNeg() {
+  negFlag = 1;
+}
+
+function toggleNeg() {
+  if (negFlag === 0) {
+    negFlag = 1;
+  } else {
+    negFlag = 0;
+  }
+}
+
+function getNeg() {
+  return negFlag;
 }
 
 let operand1 = 0;
@@ -85,6 +141,11 @@ function hideSmallIcons(){
   for (let icon of smallIcons) {
     icon.style.opacity = "0";
   }
+}
+
+function hideSmallNeg() {
+  const smallNeg = document.getElementById("smallNeg");
+  smallNeg.style.opacity = "0";
 }
 
 function displayDivision() {
@@ -109,6 +170,31 @@ function displayAddition() {
   hideSmallIcons();
   const addIcon = document.getElementById("smallAddition");
   addIcon.style.opacity = "1";
+}
+
+function displayNegative() {
+  const negIcon = document.getElementById("smallNeg");
+  negIcon.style.opacity = "1";
+}
+
+function addNeg() {
+  const LCD = document.getElementById("sevenSegment");
+  if (clearFlag === 0) {
+    toggleNeg();
+    if (getNeg() === 1){
+      if(LCD.textContent.length < 10) {
+        LCD.textContent = LCD.textContent.replace(/^/,'-');
+      } else {
+        displayNegative();
+      }
+    } else {
+      if(LCD.textContent.length < 11 && LCD.textContent.includes("-")) {
+        LCD.textContent = LCD.textContent.replace('-','');
+      } else {
+        hideSmallNeg();     
+      }
+    }
+  }
 }
 
 /*functionCheckPreviousOp(operation) {

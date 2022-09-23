@@ -100,6 +100,11 @@ body {
 
 #smallSigns {
   display: flex;
+  justify-content: space-between;
+}
+
+#smallOperations {
+  display: flex;
   justify-content: right;
   font-family: "curved-seven-segment";
 }
@@ -108,7 +113,7 @@ body {
   margin: 0px;
 }
 
-.smallIcon {
+.smallIcon, .smallIconNeg {
   width: 15px;
   height: 15px;
   background-color: #000;

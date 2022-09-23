@@ -28,10 +28,15 @@
       <div id="calcDisplay">
         <div id="calcLCD">
           <div id="smallSigns">
-            <div class="smallIcon" id="smallDivision"><pre>&#247</pre></div>
-            <div class="smallIcon" id="smallMultiplication">x</div>
-            <div class="smallIcon" id="smallSubtraction">–</div>
-            <div class="smallIcon" id="smallAddition">+</div>
+            <div id="smallNegPos">
+              <div class="smallIconNeg" id="smallNeg">-</div>
+            </div>
+            <div id="smallOperations">
+              <div class="smallIcon" id="smallDivision"><pre>&#247</pre></div>
+              <div class="smallIcon" id="smallMultiplication">x</div>
+              <div class="smallIcon" id="smallSubtraction">–</div>
+              <div class="smallIcon" id="smallAddition">+</div>
+            </div>
           </div>
           <div id="sevenSegment">012345678.</div>
         </div>
@@ -46,7 +51,7 @@
             <div class="button redButt" id="clearButt">C</div>
           </div>
           <div class="buttonOutline">
-            <div class="button blackButt">+/-</div>
+            <div class="button blackButt" id="negButt">+/-</div>
           </div>
           <div class="buttonOutline">
             <div class="button blackButt" id="divButt"><pre>&#247</pre></div>
