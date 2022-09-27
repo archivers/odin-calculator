@@ -4,6 +4,12 @@ let periodFlag = 0;
 let clearFlag = 0;
 //negFlag = 1 means negative
 let negFlag = 0;
+//stores the last pressed operation
+let activeOperation = 0;
+//stores whether or not a number has been pressed recently, 0 means no
+let numpadActive = 0;
+//1 means clear display upon a number being pressed (since an operation button has been pressed)
+let clearDisplay = 0;
 
 const divButtDiv = document.getElementById("divButt");
 const multButtDiv = document.getElementById("multButt");
@@ -26,10 +32,51 @@ for (const numButt of numButtDiv) {
 periodButtDiv.addEventListener('click',addPeriod);
 negButtDiv.addEventListener('click',addNeg);
 
+function storeActiveOperation(operation) {
+  activeOperation = operation;
+}
+
+function getActiveOperation() {
+  return activeOperation;
+}
+
+function setNumpadActive(flag) {
+  numpadActive = flag;
+}
+
+function isNumpadActive() {
+  return numpadActive;
+}
+
+function setClearDisplay (flag) {
+  clearDisplay = flag;
+}
+
+function getClearDisplay() {
+  return clearDisplay;
+}
+
 function division() {
-  storeDisplayOperand();
+  const LCD = document.getElementById("sevenSegment");
+  //storeDisplayOperand();
   //alert(returnDisplayOperand());
   displayDivision();
+
+  //if previous operation exists
+  if (getActiveOperation() !== 0) {
+    //if a number has been recently entered, complete the operation
+    if(isNumpadActive() === 1) {
+      operand = LCD.textContent;
+      let tempString = eval(getDisplayOperand() + getActiveOperation() + operand)+"";
+      LCD.textContent = tempString.substring(0,10);
+    } else { 
+    }
+  }
+  storeActiveOperation('/');
+  storeDisplayOperand(LCD.textContent);
+  setClearDisplay(1);
+  setNumpadActive(0);
+
 }
 
 function multiplication() {
@@ -52,11 +99,17 @@ function clearScreen() {
   resetNeg();
   hideSmallIcons();
   hideSmallNeg();
+  storeActiveOperation(0);
 }
 
 function updateScreen(e) {
   resetClearFlag();
+  setNumpadActive(1);
   const LCD = document.getElementById("sevenSegment");
+  
+  if(getClearDisplay() === 1) {
+    LCD.textContent = "0.";
+  }
 
   if (LCD.textContent.length < 10) {
     if (LCD.textContent.endsWith(".") && periodFlag === 0) {
@@ -132,7 +185,7 @@ function storeDisplayOperand() {
   operand1 = LCD.textContent;
 }
 
-function returnDisplayOperand() {
+function getDisplayOperand() {
   return operand1;
 }
 
