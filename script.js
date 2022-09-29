@@ -19,6 +19,7 @@ const clearButtDiv = document.getElementById("clearButt");
 const numButtDiv = document.getElementsByClassName("numButt");
 const periodButtDiv = document.getElementById("periodButt");
 const negButtDiv = document.getElementById("negButt");
+const equalButtDiv = document.getElementById("equalButt");
 
 
 divButtDiv.addEventListener('click', division);
@@ -31,6 +32,7 @@ for (const numButt of numButtDiv) {
 }
 periodButtDiv.addEventListener('click',addPeriod);
 negButtDiv.addEventListener('click',addNeg);
+equalButtDiv.addEventListener('click',equal);
 
 function storeActiveOperation(operation) {
   activeOperation = operation;
@@ -154,6 +156,30 @@ function clearScreen() {
   hideSmallIcons();
   hideSmallNeg();
   storeActiveOperation(0);
+}
+
+function equal() {
+  const LCD = document.getElementById("sevenSegment");
+  
+  if(getActiveOperation() !== 0) {
+    /*calculator has peculiar behavior of multiplying/dividing with itself when equal is pressed
+      if the previous operation was multiplication/division
+    */
+    if(!isNumpadActive()) {
+      if(getActiveOperation() === "*" || getActiveOperation() === "/") {
+        let tempString = eval(getDisplayOperand() + getActiveOperation() + getDisplayOperand())+"";
+        LCD.textContent = tempString.substring(0,10);
+      }
+    } else {
+      //execute normally
+      operand = LCD.textContent;
+      let tempString = eval(getDisplayOperand() + getActiveOperation() + operand)+"";
+      LCD.textContent = tempString.substring(0,10);
+    }
+  }
+  hideSmallIcons();
+  storeActiveOperation(0);
+  setClearDisplay(1);
 }
 
 function updateScreen(e) {
