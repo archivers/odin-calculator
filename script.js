@@ -80,15 +80,69 @@ function division() {
 }
 
 function multiplication() {
+  const LCD = document.getElementById("sevenSegment");
+  //storeDisplayOperand();
+  //alert(returnDisplayOperand());
   displayMultiplication();
+
+  //if previous operation exists
+  if (getActiveOperation() !== 0) {
+    //if a number has been recently entered, complete the operation
+    if(isNumpadActive() === 1) {
+      operand = LCD.textContent;
+      let tempString = eval(getDisplayOperand() + getActiveOperation() + operand)+"";
+      LCD.textContent = tempString.substring(0,10);
+    } else { 
+    }
+  }
+  storeActiveOperation('*');
+  storeDisplayOperand(LCD.textContent);
+  setClearDisplay(1);
+  setNumpadActive(0);
 }
 
 function subtraction() {
+  const LCD = document.getElementById("sevenSegment");
+  //storeDisplayOperand();
+  //alert(returnDisplayOperand());
   displaySubtraction();
+
+  //if previous operation exists
+  if (getActiveOperation() !== 0) {
+    //if a number has been recently entered, complete the operation
+    if(isNumpadActive() === 1) {
+      operand = LCD.textContent;
+      let tempString = eval(getDisplayOperand() + getActiveOperation() + operand)+"";
+      LCD.textContent = tempString.substring(0,10);
+    } else { 
+    }
+  }
+  storeActiveOperation('-');
+  storeDisplayOperand(LCD.textContent);
+  setClearDisplay(1);
+  setNumpadActive(0);
 }
 
 function addition() {
+  const LCD = document.getElementById("sevenSegment");
+  //storeDisplayOperand();
+  //alert(returnDisplayOperand());
   displayAddition();
+
+  //if previous operation exists
+  if (getActiveOperation() !== 0) {
+    //if a number has been recently entered, complete the operation
+    if(isNumpadActive() === 1) {
+      operand = LCD.textContent;
+      let tempString = eval(getDisplayOperand() + getActiveOperation() + operand)+"";
+      LCD.textContent = tempString.substring(0,10);
+    } else { 
+    }
+  }
+  storeActiveOperation('+');
+  storeDisplayOperand(LCD.textContent);
+  setClearDisplay(1);
+  setNumpadActive(0);
 }
 
 function clearScreen() {
@@ -109,6 +163,7 @@ function updateScreen(e) {
   
   if(getClearDisplay() === 1) {
     LCD.textContent = "0.";
+    setClearDisplay(0);
   }
 
   if (LCD.textContent.length < 10) {
