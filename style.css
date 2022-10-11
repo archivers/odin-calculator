@@ -22,22 +22,32 @@ body {
   background-image: url("images/bg_wood.jpg");
   background-color: #cccccc;
   margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 900px;
 }
 
 #calcBody {
   width: 600px;
   height: 825px;
   background-color: #b4b5ba;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 4px;
+}
+
+#calcTop {
+  background-image: url(images/bg_calc_header.png);
+  background-repeat: repeat;
+  padding-bottom: 20px;
 }
 
 #calcHeader {
   width: 600px;
   height: 112.5px;
   padding: 0px;
+
+  background-image: url(images/bg_calc_header.png);
+  background-repeat: repeat; 
 
   font-size: 18.75px;
   font-family: Eurostile;
@@ -67,6 +77,9 @@ body {
   background-color: #80736a;
   width: 206.25px;
   height: 46.875px;
+  border-radius: 4px;
+  outline: 3px solid #a6a6a7;
+  box-shadow: 3px 3px 1px #49463f inset;
 }
 
 .calcSolarPanel {
@@ -75,6 +88,16 @@ body {
   background-color: #72665a;
   max-width: 50px;
   height: 46.875px;
+  box-shadow: 0px 3px 1px #49463f inset;
+}
+
+.rightPanel {
+  border-radius: 4px 0px 0px 4px;
+  box-shadow: 3px 3px 1px #49463f inset;
+}
+
+.leftPanel {
+  border-radius: 0px 4px 4px 0px;
 }
 
 #calcText {
@@ -96,6 +119,11 @@ body {
   background-color: #797e84;
   margin: auto;
   padding-top: 14px;
+  border-radius: 6px;
+  /*
+  border-bottom-left-radius:20%;
+  border-bottom-right-radius:20%;
+  */
 }
 
 #smallSigns {
@@ -132,6 +160,8 @@ body {
   height: 131.25px;
   background-color: #838578;
   margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: 4px 4px 4px #49463f inset;
 }
 
 #sevenSegment {
@@ -146,8 +176,7 @@ body {
 }
 
 #calcButtHeader {
-  height: 75px;
-  outline: solid;
+  height: 55px;
 }
 
 #calcButts {

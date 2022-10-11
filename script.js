@@ -78,6 +78,7 @@ function division() {
   storeDisplayOperand(LCD.textContent);
   setClearDisplay(1);
   setNumpadActive(0);
+  clearPeriod();
 
 }
 
@@ -101,6 +102,7 @@ function multiplication() {
   storeDisplayOperand(LCD.textContent);
   setClearDisplay(1);
   setNumpadActive(0);
+  clearPeriod();
 }
 
 function subtraction() {
@@ -123,6 +125,7 @@ function subtraction() {
   storeDisplayOperand(LCD.textContent);
   setClearDisplay(1);
   setNumpadActive(0);
+  clearPeriod();
 }
 
 function addition() {
@@ -145,6 +148,7 @@ function addition() {
   storeDisplayOperand(LCD.textContent);
   setClearDisplay(1);
   setNumpadActive(0);
+  clearPeriod();
 }
 
 function clearScreen() {
